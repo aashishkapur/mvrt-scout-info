@@ -7,7 +7,7 @@ var teams = [];
 
 function Team(teamNum, position)
 {
-	this.teamNum = teamNum;
+	this.teamNum = parseInt(teamNum);
 	this.position = position;
 }
 
@@ -95,7 +95,26 @@ function getRankingInfo()
 		success: function(data){
 			for(var i = 0; i < data.length; i++)
 			{
-				console.log(data[i]);
+				for(var j = 0; j < teams.length; j++)
+				{
+					// console.log(data[i][1]);
+
+					if(data[i][1] == teams[j]["teamNum"])
+					{
+						// console.log(data[i][1]);
+						teams[j]["rank"] = data[i][0];
+						teams[j]["qa"] = data[i][2];
+						teams[j]["auto"] = data[i][3];
+						teams[j]["container"] = data[i][4];
+						teams[j]["coop"] = data[i][5];
+						teams[j]["litter"] = data[i][6];
+						teams[j]["tote"] = data[i][7];
+						teams[j]["played"] = data[i][8];
+						console.log(teams[j]);
+
+					}
+				}
+
 			}
 
 		}
@@ -103,7 +122,8 @@ function getRankingInfo()
 
 }
 /*
-
+	0 		1 		2 			3 		4 				5 			6			7 		8  	
+["Rank", "Team", "Qual Avg", "Auto", "Container", "Coopertition", "Litter", "Tote", "Played"]
 rank
 qa
 auto
@@ -113,6 +133,40 @@ litter
 tote
 played
 opr*/
+
+/*
+			<td id="blue1-teamNum">115</td>
+			<td id="blue1-rank">1</td>
+			<td id="blue1-qa">100.00</td>
+			<td id="blue1-auto">100</td>
+			<td id="blue1-container">100</td>
+			<td id="blue1-coop">100</td>
+			<td id="blue1-litter">100</td>
+			<td id="blue1-tote">100</td>
+			<td id="blue1-played">100</td>
+			<td id="blue1-opr">100.3232</td>
+
+*/
+
+function writeData()
+{
+	for(var i = 0; i < teams.length; i++)
+	{
+		// console.log(i);
+		var position = teams[i]["position"];
+		console.log(position + "  " + teams[i]["teamNum"]);
+		$("#" + position + "-teamNum").text(teams[i]["teamNum"]);
+		$("#" + position + "-rank").text(teams[i]["rank"]);
+		$("#" + position + "-qa").text(teams[i]["qa"]);
+		$("#" + position + "-auto").text(teams[i]["auto"]);
+		$("#" + position + "-container").text(teams[i]["container"]);
+		$("#" + position + "-coop").text(teams[i]["coop"]);
+		$("#" + position + "-litter").text(teams[i]["litter"]);
+		$("#" + position + "-tote").text(teams[i]["tote"]);
+		$("#" + position + "-played").text(teams[i]["played"]);
+		$("#" + position + "-opr").text(teams[i]["opr"]);
+	}
+}
 
 $(document).ready(function() {
 
@@ -124,6 +178,8 @@ $(document).ready(function() {
 		{
 			getData(parseInt($("#matchNum").val()));
 			getStats();
+			getRankingInfo();
+			writeData();
 		}
 	});
 

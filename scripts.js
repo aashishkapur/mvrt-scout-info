@@ -168,7 +168,15 @@ function writeData()
 	}
 }
 
+var input = false;
+
 $(document).ready(function() {
+
+	// $("#open-advanced-options").click(function(){
+	// 	input = true;
+	// 	$("eventKey").text(eventKey);
+	// 	$("#advanced").css("display", "");
+	// });
 
 	$("#submit").click(function(e){
 		e.preventDefault();

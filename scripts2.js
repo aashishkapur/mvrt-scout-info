@@ -1,4 +1,4 @@
-var eventKey = "2015utwv"
+var eventKey = "2015cama"
 var tbaID = "115:scouting-teams:v0.2";
 var red = [];
 var blue = [];

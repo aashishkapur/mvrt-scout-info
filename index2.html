@@ -1,0 +1,270 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Aashish's scouting thing</title>
+	<link rel="stylesheet" href="css/foundation.css" />
+	<script src="js/vendor/modernizr.js"></script>
+	<style>
+
+	/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+
+	/* 
+	Generic Styling, for Desktops/Laptops 
+	*/
+	table { 
+		width: 100%; 
+		border-collapse: collapse; 
+	}
+	th { 
+		background: #333; 
+		color: white; 
+		font-weight: bold; 
+	}
+	td, th { 
+		padding: 6px; 
+		border: 1px solid #ccc; 
+		text-align: left; 
+	}
+	@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+			margin: 0 auto;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		tr
+		{
+			border: 1px solid #ccc; 
+			border-bottom: 1px solid black;
+		}
+
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+					/*border-bottom: 1px solid black;*/
+
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+		*/
+		td:nth-of-type(1):before { content: "Team Number"; }
+		td:nth-of-type(2):before { content: "Rank"; }
+		td:nth-of-type(3):before { content: "Qual Avg"; }
+		td:nth-of-type(4):before { content: "Auto"; }
+		td:nth-of-type(5):before { content: "Container"; }
+		td:nth-of-type(6):before { content: "Coop"; }
+		td:nth-of-type(7):before { content: "Litter"; }
+		td:nth-of-type(8):before { content: "Tote"; }
+		td:nth-of-type(9):before { content: "Played"; }
+		td:nth-of-type(10):before { content: "OPR"; }
+
+
+	}
+
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body {
+			padding: 0;
+			margin: 0;
+			width: 100%; 
+			font-size: 12px;	}
+		}
+
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		body {
+			width: 495px;
+		}
+	}
+
+	</style>
+	<style>
+	tr.blue{
+		background-color: #ddf;
+	}
+	.red{
+		background-color: #fdd;
+	}
+
+
+	table{border-collapse:collapse !important;}
+
+
+	</style>
+  </head>
+  <body>
+	
+	<div class="row">
+	  <div class="large-12 columns">
+		<h1>Aashish's scouting thing</h1>
+		<p>Enter the match number, and data from the teams participating in the match should come up.  If they don't, talk to me</p>
+	  </div>
+	</div>
+	<hr/>
+	<form>
+		<div class="row">
+			<div class="small-12 columns center">
+				<label for="matchNum" class="inline left">Qualification Match Number
+				<input id="matchNum" type="number" placeholder="99" /></label>
+			</div>
+		</div>
+<!-- 		<div class="row">
+			<a id="open-advanced-options">Advanced</a>
+		</div>
+
+		<div id="advanced" class="row" style="display: none">
+			<div class="small-12 columns center">
+				<label for="eventKey" class="inline left">Event Key(ex. 2015cama)
+				<input id="eventKey" type="text" placeholder="2015utwv" /></label>
+			</div>
+		</div>
+ -->
+		<div class="row">
+			<div class="small-12 columns">
+				<a href="#" id="submit" class="button expand">SUBMIT!!!!!!!</a>
+			</div>
+		</div>
+	</form>
+
+	<hr/>
+	<div id="newInfo" style="display: none;">
+		<div class="row">
+			<h2>Data</h2>
+		</div>
+
+		<table>
+		<thead>
+		<tr>
+			<th>Team Number</th>
+			<th>Rank</th>
+			<th>Qual Avg</th>
+			<th>Auto</th>
+			<th>Container</th>
+			<th>Coop</th>
+			<th>Litter</th>
+			<th>Tote</th>
+			<th>Played</th>
+			<th>OPR</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="blue">
+			<td id="blue1-teamNum">115</td>
+			<td id="blue1-rank">1</td>
+			<td id="blue1-qa">100.00</td>
+			<td id="blue1-auto">100</td>
+			<td id="blue1-container">100</td>
+			<td id="blue1-coop">100</td>
+			<td id="blue1-litter">100</td>
+			<td id="blue1-tote">100</td>
+			<td id="blue1-played">100</td>
+			<td id="blue1-opr">100.3232</td>
+		</tr>
+		<tr class="blue">
+			<td id="blue2-teamNum">115</td>
+			<td id="blue2-rank">1</td>
+			<td id="blue2-qa">100.00</td>
+			<td id="blue2-auto">100</td>
+			<td id="blue2-container">100</td>
+			<td id="blue2-coop">100</td>
+			<td id="blue2-litter">100</td>
+			<td id="blue2-tote">100</td>
+			<td id="blue2-played">100</td>
+			<td id="blue2-opr">100.3232</td>
+		</tr>
+		<tr class="blue">
+			<td id="blue3-teamNum">115</td>
+			<td id="blue3-rank">1</td>
+			<td id="blue3-qa">100.00</td>
+			<td id="blue3-auto">100</td>
+			<td id="blue3-container">100</td>
+			<td id="blue3-coop">100</td>
+			<td id="blue3-litter">100</td>
+			<td id="blue3-tote">100</td>
+			<td id="blue3-played">100</td>
+			<td id="blue3-opr">100.3232</td>
+		</tr>
+		<tr class="red">
+			<td id="red1-teamNum">115</td>
+			<td id="red1-rank">1</td>
+			<td id="red1-qa">100.00</td>
+			<td id="red1-auto">100</td>
+			<td id="red1-container">100</td>
+			<td id="red1-coop">100</td>
+			<td id="red1-litter">100</td>
+			<td id="red1-tote">100</td>
+			<td id="red1-played">100</td>
+			<td id="red1-opr">100.3232</td>
+		</tr>
+		<tr class="red">
+			<td id="red2-teamNum">115</td>
+			<td id="red2-rank">1</td>
+			<td id="red2-qa">100.00</td>
+			<td id="red2-auto">100</td>
+			<td id="red2-container">100</td>
+			<td id="red2-coop">100</td>
+			<td id="red2-litter">100</td>
+			<td id="red2-tote">100</td>
+			<td id="red2-played">100</td>
+			<td id="red2-opr">100.3232</td>
+		</tr>
+		<tr class="red">
+			<td id="red3-teamNum">115</td>
+			<td id="red3-rank">1</td>
+			<td id="red3-qa">100.00</td>
+			<td id="red3-auto">100</td>
+			<td id="red3-container">100</td>
+			<td id="red3-coop">100</td>
+			<td id="red3-litter">100</td>
+			<td id="red3-tote">100</td>
+			<td id="red3-played">100</td>
+			<td id="red3-opr">100.3232</td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+
+	</div>	
+	
+	<script src="js/vendor/jquery.js"></script>
+	<script src="js/foundation.min.js"></script>
+	<script src="scripts2.js"></script>
+	<script>
+	  $(document).foundation();
+	</script>
+  </body>
+</html>

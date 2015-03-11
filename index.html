@@ -6,12 +6,92 @@
 	<title>Aashish's scouting thing</title>
 	<link rel="stylesheet" href="css/foundation.css" />
 	<script src="js/vendor/modernizr.js"></script>
+	<style>
+
+	/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+	@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+			margin: 0 auto;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		tr { border: 1px solid #ccc; }
+
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+		*/
+		td:nth-of-type(1):before { content: "Team Number"; }
+		td:nth-of-type(2):before { content: "Rank"; }
+		td:nth-of-type(3):before { content: "Qual Avg"; }
+		td:nth-of-type(4):before { content: "Auto"; }
+		td:nth-of-type(5):before { content: "Container"; }
+		td:nth-of-type(6):before { content: "Coop"; }
+		td:nth-of-type(7):before { content: "Litter"; }
+		td:nth-of-type(8):before { content: "Tote"; }
+		td:nth-of-type(9):before { content: "Played"; }
+		td:nth-of-type(10):before { content: "OPR"; }
+
+
+	}
+
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body {
+			padding: 0;
+			margin: 0;
+			width: 320px; }
+		}
+
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		body {
+			width: 495px;
+		}
+	}
+
+	</style>
   </head>
   <body>
 	
 	<div class="row">
 	  <div class="large-12 columns">
-		<h2>Aashish's scouting thing</h2>
+		<h1>Aashish's scouting thing</h1>
 		<p>Enter the match number, and data from the teams participating in the match should come up.  If they don't, talk to me</p>
 	  </div>
 	</div>
@@ -30,148 +110,108 @@
 	</div>
 
 	<hr/>
-	
-	<div class="row">
-	  <div class="large-12 columns">
-		<div class="panel">
-			<h3>We&rsquo;re stoked you want to try Foundation! </h3>
-			<p>To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-			<p>Once you've exhausted the fun in this document, you should check out:</p>
-			<div class="row">
-				<div class="large-4 medium-4 columns">
-				<p><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</p>
-			</div>
-				<div class="large-4 medium-4 columns">
-					<p><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</p>
-				</div>
-				<div class="large-4 medium-4 columns">
-					<p><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</p>
-				</div>        
-					</div>
-		</div>
-	  </div>
-	</div>
-
-	<div class="row">
-	  <div class="large-8 medium-8 columns">
-		<h5>Here&rsquo;s your basic grid:</h5>
-		<!-- Grid Example -->
-
+	<div class="newInfo">
 		<div class="row">
-		  <div class="large-12 columns">
-			<div class="callout panel">
-			  <p><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
-			</div>
-		  </div>
-		</div>
-		<div class="row">
-		  <div class="large-6 medium-6 columns">
-			<div class="callout panel">
-			  <p>Six columns</p>
-			</div>
-		  </div>
-		  <div class="large-6 medium-6 columns">
-			<div class="callout panel">
-			  <p>Six columns</p>
-			</div>
-		  </div>
-		</div>
-		<div class="row">
-		  <div class="large-4 medium-4 small-4 columns">
-			<div class="callout panel">
-			  <p>Four columns</p>
-			</div>
-		  </div>
-		  <div class="large-4 medium-4 small-4 columns">
-			<div class="callout panel">
-			  <p>Four columns</p>
-			</div>
-		  </div>
-		  <div class="large-4 medium-4 small-4 columns">
-			<div class="callout panel">
-			  <p>Four columns</p>
-			</div>
-		  </div>
-		</div>
-		
-		<hr />
-				
-		<h5>We bet you&rsquo;ll need a form somewhere:</h5>
-		<form>
-				  <div class="row">
-					<div class="large-12 columns">
-					  <label>Input Label</label>
-					  <input type="text" placeholder="large-12.columns" />
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="large-4 medium-4 columns">
-					  <label>Input Label</label>
-					  <input type="text" placeholder="large-4.columns" />
-					</div>
-					<div class="large-4 medium-4 columns">
-					  <label>Input Label</label>
-					  <input type="text" placeholder="large-4.columns" />
-					</div>
-					<div class="large-4 medium-4 columns">
-					  <div class="row collapse">
-						<label>Input Label</label>
-						<div class="small-9 columns">
-						  <input type="text" placeholder="small-9.columns" />
-						</div>
-						<div class="small-3 columns">
-						  <span class="postfix">.com</span>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="large-12 columns">
-					  <label>Select Box</label>
-					  <select>
-						<option value="husker">Husker</option>
-						<option value="starbuck">Starbuck</option>
-						<option value="hotdog">Hot Dog</option>
-						<option value="apollo">Apollo</option>
-					  </select>
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="large-6 medium-6 columns">
-					  <label>Choose Your Favorite</label>
-					  <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-					  <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-					</div>
-					<div class="large-6 medium-6 columns">
-					  <label>Check these out</label>
-					  <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-					  <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="large-12 columns">
-					  <label>Textarea Label</label>
-					  <textarea placeholder="small-12.columns"></textarea>
-					</div>
-				  </div>
-				</form>
-	  </div>     
+			<div class="small-12 columns blue">
+				<h2>Blue Alliance</h2>
 
-	  <div class="large-4 medium-4 columns">
-			  <h5>Try one of these buttons:</h5>
-			  <p><a href="#" class="small button">Simple Button</a><br/>
-		<a href="#" class="small radius button">Radius Button</a><br/>
-		<a href="#" class="small round button">Round Button</a><br/>            
-		<a href="#" class="medium success button">Success Btn</a><br/>
-		<a href="#" class="medium alert button">Alert Btn</a><br/>
-		<a href="#" class="medium secondary button">Secondary Btn</a></p>           
-				<div class="panel">
-			<h5>So many components, girl!</h5>
-			<p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
-			<a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>          
+			</div>
 		</div>
-	  </div>
-	</div>
+
+			<table>
+		<thead>
+		<tr>
+			<th>Team Number</th>
+			<th>Rank</th>
+			<th>Qual Avg</th>
+			<th>Auto</th>
+			<th>Container</th>
+			<th>Coop</th>
+			<th>Litter</th>
+			<th>Tote</th>
+			<th>Played</th>
+			<th>OPR</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>1</td>
+			<td>100.00</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100</td>
+			<td>100.3232</td>
+		</tr>
+		</tbody>
+	</table>
+
+
+	</div>	
 	
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/foundation.min.js"></script>

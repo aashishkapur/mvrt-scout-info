@@ -13,17 +13,13 @@
 	This query will take effect for any screen smaller than 760px
 	and also iPads specifically.
 	*/
-	
+
 	/* 
 	Generic Styling, for Desktops/Laptops 
 	*/
 	table { 
 		width: 100%; 
 		border-collapse: collapse; 
-	}
-	/* Zebra striping */
-	tr:nth-of-type(odd) { 
-		background: #eee; 
 	}
 	th { 
 		background: #333; 
@@ -52,12 +48,18 @@
 			left: -9999px;
 		}
 
-		tr { border: 1px solid #ccc; }
+		tr
+		{
+			border: 1px solid #ccc; 
+			border-bottom: 1px solid black;
+		}
 
 		td {
 			/* Behave  like a "row" */
 			border: none;
 			border-bottom: 1px solid #eee;
+					/*border-bottom: 1px solid black;*/
+
 			position: relative;
 			padding-left: 50%;
 		}
@@ -108,6 +110,19 @@
 	}
 
 	</style>
+	<style>
+	tr.blue{
+		background-color: #ddf;
+	}
+	.red{
+		background-color: #fdd;
+	}
+
+
+	table{border-collapse:collapse !important;}
+
+
+	</style>
   </head>
   <body>
 	
@@ -127,17 +142,15 @@
 	</div>
 	<div class="row">
 		<div class="small-12 columns">
-			<a href="#" class="button expand">SUBMIT!!!!!!!</a>
+			<a href="#" id="submit"class="button expand">SUBMIT!!!!!!!</a>
 		</div>
 	</div>
 
 	<hr/>
 	<div class="newInfo">
 		<div class="row">
-			<div class="small-12 columns blue">
-				<h2>Blue Alliance</h2>
-
-			</div>
+			<h2>Blue Alliance</h2>
+		</div>
 		</div>
 
 			<table>
@@ -157,77 +170,77 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="blue">
+			<td id="blue1-teamNum">115</td>
+			<td id="blue1-rank">1</td>
+			<td id="blue1-qa">100.00</td>
+			<td id="blue1-auto">100</td>
+			<td id="blue1-container">100</td>
+			<td id="blue1-coop">100</td>
+			<td id="blue1-litter">100</td>
+			<td id="blue1-tote">100</td>
+			<td id="blue1-played">100</td>
+			<td id="blue1-opr">100.3232</td>
 		</tr>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="blue">
+			<td id="blue2-teamNum">115</td>
+			<td id="blue2-rank">1</td>
+			<td id="blue2-qa">100.00</td>
+			<td id="blue2-auto">100</td>
+			<td id="blue2-container">100</td>
+			<td id="blue2-coop">100</td>
+			<td id="blue2-litter">100</td>
+			<td id="blue2-tote">100</td>
+			<td id="blue2-played">100</td>
+			<td id="blue2-opr">100.3232</td>
 		</tr>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="blue">
+			<td id="blue3-teamNum">115</td>
+			<td id="blue3-rank">1</td>
+			<td id="blue3-qa">100.00</td>
+			<td id="blue3-auto">100</td>
+			<td id="blue3-container">100</td>
+			<td id="blue3-coop">100</td>
+			<td id="blue3-litter">100</td>
+			<td id="blue3-tote">100</td>
+			<td id="blue3-played">100</td>
+			<td id="blue3-opr">100.3232</td>
 		</tr>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="red">
+			<td id="red1-teamNum">115</td>
+			<td id="red1-rank">1</td>
+			<td id="red1-qa">100.00</td>
+			<td id="red1-auto">100</td>
+			<td id="red1-container">100</td>
+			<td id="red1-coop">100</td>
+			<td id="red1-litter">100</td>
+			<td id="red1-tote">100</td>
+			<td id="red1-played">100</td>
+			<td id="red1-opr">100.3232</td>
 		</tr>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="red">
+			<td id="red2-teamNum">115</td>
+			<td id="red2-rank">1</td>
+			<td id="red2-qa">100.00</td>
+			<td id="red2-auto">100</td>
+			<td id="red2-container">100</td>
+			<td id="red2-coop">100</td>
+			<td id="red2-litter">100</td>
+			<td id="red2-tote">100</td>
+			<td id="red2-played">100</td>
+			<td id="red2-opr">100.3232</td>
 		</tr>
-		<tr>
-			<td>115</td>
-			<td>1</td>
-			<td>100.00</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100</td>
-			<td>100.3232</td>
+		<tr class="red">
+			<td id="red3-teamNum">115</td>
+			<td id="red3-rank">1</td>
+			<td id="red3-qa">100.00</td>
+			<td id="red3-auto">100</td>
+			<td id="red3-container">100</td>
+			<td id="red3-coop">100</td>
+			<td id="red3-litter">100</td>
+			<td id="red3-tote">100</td>
+			<td id="red3-played">100</td>
+			<td id="red3-opr">100.3232</td>
 		</tr>
 		</tbody>
 	</table>
@@ -237,6 +250,7 @@
 	
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/foundation.min.js"></script>
+	<script src="scripts.js"></script>
 	<script>
 	  $(document).foundation();
 	</script>

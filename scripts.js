@@ -76,7 +76,7 @@ function getStats()
 			for(var i = 0; i < teams.length; i++)
 			{
 				var teamNum = teams[i]["teamNum"];
-				teams[i]["opr"] = data["oprs"][teamNum];
+				teams[i]["opr"] = data["oprs"][teamNum].toFixed(3);
 			}
 
 		}

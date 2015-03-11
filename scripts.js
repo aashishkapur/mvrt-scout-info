@@ -5,13 +5,24 @@ var blue = [];
 
 var teams = [];
 
-function Team(teamNum)
+function Team(teamNum, position)
 {
 	this.teamNum = teamNum;
+	this.position = position;
 }
 
 
 /*
+
+rank
+qa
+auto
+container
+coop
+litter
+tote
+played
+opr
 			<th>Team Number</th>
 			<th>Rank</th>
 			<th>Qual Avg</th>
@@ -39,13 +50,13 @@ function getData(matchNum)
 				if(data[i]["comp_level"] == "qm" && data[i]["match_number"] == matchNum)
 				{
 					console.log(data[i]);
-					blue[0] = data[i]["alliances"]["blue"]["teams"][0].substring(3);
-					blue[1] = data[i]["alliances"]["blue"]["teams"][1].substring(3);
-					blue[2] = data[i]["alliances"]["blue"]["teams"][2].substring(3);
+					teams.push(new Team(data[i]["alliances"]["blue"]["teams"][0].substring(3), "blue1"));
+					teams.push(new Team(data[i]["alliances"]["blue"]["teams"][1].substring(3), "blue2"));
+					teams.push(new Team(data[i]["alliances"]["blue"]["teams"][2].substring(3), "blue3"));
 
-					red[0] = data[i]["alliances"]["red"]["teams"][0].substring(3);
-					red[1] = data[i]["alliances"]["red"]["teams"][1].substring(3);
-					red[2] = data[i]["alliances"]["red"]["teams"][2].substring(3);
+					teams.push(new Team(data[i]["alliances"]["red"]["teams"][0].substring(3), "red1"));
+					teams.push(new Team(data[i]["alliances"]["red"]["teams"][1].substring(3), "red2"));
+					teams.push(new Team(data[i]["alliances"]["red"]["teams"][2].substring(3), "red3"));
 				}
 			}
 
@@ -55,10 +66,53 @@ function getData(matchNum)
 
 function getStats()
 {
+	$.ajax({
+		type:"GET",
+		url: "http://www.thebluealliance.com/api/v2/event/" + eventKey + "/stats",
+		data: {"X-TBA-App-Id": tbaID},
+		dataType: "json",
+		async: false,
+		success: function(data){
+			for(var i = 0; i < teams.length; i++)
+			{
+				var teamNum = teams[i]["teamNum"];
+				teams[i]["opr"] = data["oprs"][teamNum];
+			}
+
+		}
+	});
 
 }
 
+function getRankingInfo()
+{
+	$.ajax({
+		type:"GET",
+		url: "http://www.thebluealliance.com/api/v2/event/" + eventKey + "/rankings",
+		data: {"X-TBA-App-Id": tbaID},
+		dataType: "json",
+		async: false,
+		success: function(data){
+			for(var i = 0; i < data.length; i++)
+			{
+				console.log(data[i]);
+			}
 
+		}
+	});
+
+}
+/*
+
+rank
+qa
+auto
+container
+coop
+litter
+tote
+played
+opr*/
 
 $(document).ready(function() {
 

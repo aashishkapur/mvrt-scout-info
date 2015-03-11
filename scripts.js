@@ -180,6 +180,7 @@ $(document).ready(function() {
 			getStats();
 			getRankingInfo();
 			writeData();
+			$("#newInfo").css("display", "");
 		}
 	});
 
